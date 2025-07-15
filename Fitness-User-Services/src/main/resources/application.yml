@@ -32,17 +32,19 @@ spring:
 #      uri: mongodb+srv://admin:gsk3E1ZwjWwgqAoC@cluster0.9xkoq.mongodb.net/
 #      database: eqipped_new
   datasource:
-    url: jdbc:oracle:thin:@localhost:1521:xe
-    username: fitness
-    password: root
-    driver-class-name: oracle.jdbc.OracleDriver
+#    url: jdbc:oracle:thin:@localhost:1521:xe
+#    username: fitness
+#    password: root
+      url: jdbc:oracle:thin:@//localhost:1521/FREEPDB1  # Use service name here
+      username: testuser
+      password: root
   # Optional: Connection pool settings
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 2
-      idle-timeout: 600000
-      connection-timeout: 30000
-      pool-name: OracleHikariCP
+      hikari:
+        maximum-pool-size: 10
+        minimum-idle: 2
+        idle-timeout: 600000
+        connection-timeout: 30000
+        pool-name: OracleHikariCP
   jpa:
     hibernate:
       ddl-auto: update

@@ -17,7 +17,7 @@ public class ActivityResponse {
 	private String userId;
 	private ActivityType type;
 	private Integer duration;
-	private Integer calouiesBurn;
+	private Integer caloriesBurn;
 	private LocalDateTime startTime;
 	private Map<String,Object> additionalMetrics;	
 	private LocalDateTime createAt;
@@ -30,7 +30,7 @@ public class ActivityResponse {
 		activity.setUserId(activityResponse.getUserId());
 		activity.setType(activityResponse.getType());
 		activity.setDuration(activityResponse.getDuration());
-		activity.setCalouiesBurn(activityResponse.getCalouiesBurn());
+		activity.setCaloriesBurn(activityResponse.getCaloriesBurn());
 		activity.setStartTime(activityResponse.getStartTime());
 		activity.setAdditionalMetrics(activityResponse.getAdditionalMetrics());
 		activity.setCreateAt(activityResponse.getCreateAt());
@@ -46,7 +46,7 @@ public class ActivityResponse {
 		activityResponse.setUserId(activity.getUserId());
 		activityResponse.setType(activity.getType());
 		activityResponse.setDuration(activity.getDuration());
-		activityResponse.setCalouiesBurn(activity.getCalouiesBurn());
+		activityResponse.setCaloriesBurn(activity.getCaloriesBurn());
 		activityResponse.setStartTime(activity.getStartTime());
 		activityResponse.setAdditionalMetrics(activity.getAdditionalMetrics());
 		activityResponse.setCreateAt(activity.getCreateAt());

@@ -67,7 +67,11 @@ public class UserServicesImpl implements UserServices{
 		userRepository.deleteByEmail(email);
 		
 	}
-	
-	 
+
+	@Override
+	public Boolean validateById(String id) {
+		return userRepository.existsById(id);
+	}
+
 
 }

@@ -24,7 +24,7 @@ public class Activity {
 	private String userId;
 	private ActivityType type;
 	private Integer duration;
-	private Integer calouiesBurn;
+	private Integer caloriesBurn;
 	private LocalDateTime startTime;
 	
 	@Field("metrics")

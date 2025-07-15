@@ -118,4 +118,10 @@ public class UserController {
 		}
 	}
 
+	@GetMapping("/validate/{userId}")
+	public ResponseEntity<Boolean> validate(@PathVariable("userId") String id){
+		return ResponseEntity.ok(userServices.validateById(id));
+
+	}
+
 }

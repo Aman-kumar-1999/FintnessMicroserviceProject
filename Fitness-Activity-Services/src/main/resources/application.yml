@@ -6,7 +6,7 @@ spring:
     name: Fitness-Activity-Services
   data:
     mongodb:
-      uri: mongodb://localhost:27017/
+      uri: mongodb://admin:admin123@localhost:27017/ # local docker mongo db container
       database: FitnessActivity
 eureka:
   instance:

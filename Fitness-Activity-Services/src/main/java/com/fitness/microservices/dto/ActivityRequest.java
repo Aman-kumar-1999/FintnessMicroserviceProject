@@ -17,7 +17,7 @@ public class ActivityRequest {
 	private String userId;
 	private ActivityType type;
 	private Integer duration;
-	private Integer calouiesBurn;
+	private Integer caloriesBurn;
 	private LocalDateTime startTime;
 	private Map<String, Object> additionalMetrics;
 	
@@ -28,7 +28,7 @@ public class ActivityRequest {
 		activity.setUserId(activityRequest.getUserId());
 		activity.setType(activityRequest.getType());
 		activity.setDuration(activityRequest.getDuration());
-		activity.setCalouiesBurn(activityRequest.getCalouiesBurn());
+		activity.setCaloriesBurn(activityRequest.getCaloriesBurn());
 		activity.setStartTime(activityRequest.getStartTime());
 		activity.setAdditionalMetrics(activityRequest.getAdditionalMetrics());
 		

@@ -61,7 +61,7 @@ public class ActivityServiceImpl implements ActivityService{
 		activity.setUserId(updateRequestValue.getUserId());
 		activity.setType(updateRequestValue.getType());
 		activity.setDuration(updateRequestValue.getDuration());
-		activity.setCalouiesBurn(updateRequestValue.getCalouiesBurn());
+		activity.setCaloriesBurn(updateRequestValue.getCaloriesBurn());
 		activity.setStartTime(updateRequestValue.getStartTime());
 		activity.setAdditionalMetrics(updateRequestValue.getAdditionalMetrics());
 		return ActivityResponse

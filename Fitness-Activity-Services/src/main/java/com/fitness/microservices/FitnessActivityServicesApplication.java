@@ -9,7 +9,7 @@ public class FitnessActivityServicesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FitnessActivityServicesApplication.class, args);
 		
-		System.out.println("      Running  \t \t                 -> -> -> -> -> -> -> -> ->            \t \t       ");
+		System.out.println("Activity Services is Running .........");
 	}
 
 }

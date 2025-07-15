@@ -3,6 +3,8 @@ package com.fitness.microservices.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fitness.microservices.services.UserServices;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,6 +26,9 @@ public class ActivityController {
 	
 	@Autowired
 	private ActivityService activityService;
+
+	@Autowired
+	private UserServices userServices;
 	
 	@GetMapping("/")
 	public ResponseEntity<?> getAll(){
@@ -41,7 +46,7 @@ public class ActivityController {
 				map.put("DATA", activityService.getActivityByUserId(userId));
 			}else {
 				map.put("STATUS", "FAILED");
-				map.put("MESSAGE", "This given UserId is not persent");
+				map.put("MESSAGE", "This given UserId is not percent");
 			}
 			//map.put("DATA", map);
 		} catch (Exception e) {
@@ -60,11 +65,11 @@ public class ActivityController {
 		Map<String,Object> map = new HashMap<>();
 		
 		try {
-			
-			if(activityService.exitByUserId(activityRequest.getUserId())) {
+			if (userServices.validate(activityRequest.getUserId())){
+/*			if(activityService.exitByUserId(activityRequest.getUserId())) {
 				map.put("STATUS", "FAILED");
-				map.put("MESSAGE", "This given UserId is already persent");
-			}else {
+				map.put("MESSAGE", "This given UserId is already percent");
+			}else {*/
 				map.put("STATUS","SUCCESS" );
 				map.put("DATA", activityService.postActivity(activityRequest));
 			}
@@ -91,7 +96,7 @@ public class ActivityController {
 				map.put("DATA", activityService.putActivity(updateRequestValue));
 			}else {
 				map.put("STATUS", "FAILED");
-				map.put("MESSAGE", "This given UserId is not persent");
+				map.put("MESSAGE", "This given UserId is not percent");
 			}
 			//map.put("DATA", map);
 		} catch (Exception e) {
@@ -117,7 +122,7 @@ public class ActivityController {
 				map.put("MESSAGE", "The given userId : "+userId+" data has been deleted");
 			}else {
 				map.put("STATUS", "FAILED");
-				map.put("MESSAGE", "This given UserId is not persent");
+				map.put("MESSAGE", "This given UserId is not percent");
 			}
 			//map.put("DATA", map);
 		} catch (Exception e) {

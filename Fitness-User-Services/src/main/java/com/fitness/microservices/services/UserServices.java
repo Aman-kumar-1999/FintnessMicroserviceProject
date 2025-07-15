@@ -21,6 +21,7 @@ public interface UserServices {
 	public UserResponse updateUser(UpdaterRequest updaterRequest);
 	
 	public void deleteUser(String email);
-	
 
+
+    public Boolean validateById(String id);
 }
