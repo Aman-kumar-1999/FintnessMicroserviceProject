@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/Fitness-User-Services/pom.xml" />
         <option value="$PROJECT_DIR$/Fitness-Activity-Services/pom.xml" />
         <option value="$PROJECT_DIR$/Fitness-Eureka-Server-Services/pom.xml" />
+        <option value="$PROJECT_DIR$/aigeminiservice/pom.xml" />
       </list>
     </option>
   </component>
