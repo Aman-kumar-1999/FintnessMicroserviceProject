@@ -27,8 +27,7 @@ public class ActivityController {
 	@Autowired
 	private ActivityService activityService;
 
-	@Autowired
-	private UserServices userServices;
+
 	
 	@GetMapping("/")
 	public ResponseEntity<?> getAll(){
@@ -65,22 +64,17 @@ public class ActivityController {
 		Map<String,Object> map = new HashMap<>();
 		
 		try {
-			if (userServices.validate(activityRequest.getUserId())){
-/*			if(activityService.exitByUserId(activityRequest.getUserId())) {
-				map.put("STATUS", "FAILED");
-				map.put("MESSAGE", "This given UserId is already percent");
-			}else {*/
-				map.put("STATUS","SUCCESS" );
-				map.put("DATA", activityService.postActivity(activityRequest));
-			}
-			//map.put("DATA", map);
+
+			map.put("STATUS","SUCCESS" );
+			map.put("DATA", activityService.postActivity(activityRequest));
+
 		} catch (Exception e) {
 			map.put("STATUS", "FAILED");
 			map.put("MESSAGE", e.getMessage());
 			e.printStackTrace();
 		}
-		
-		
+
+
 		
 		return ResponseEntity.ok(map);
 	}

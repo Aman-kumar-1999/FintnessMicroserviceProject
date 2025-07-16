@@ -3,7 +3,10 @@ package com.fitness.microservices.services.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fitness.microservices.services.UserServices;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.fitness.microservices.dto.ActivityRequest;
@@ -15,10 +18,23 @@ import com.fitness.microservices.services.ActivityService;
 
 @Service
 public class ActivityServiceImpl implements ActivityService{
-	
+
+
+
 	@Autowired
 	private ActivityRepository activityRepository;
-	
+
+	@Autowired
+	private UserServices userServices;
+
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
+
+	@Value("${rabbitmq.exchange.name}")
+	private String exchangeName;
+
+	@Value("${rabbitmq.routing-key}")
+	private String routingKey;
 
 	@Override
 	public boolean exitByUserId(String userId) {
@@ -39,20 +55,33 @@ public class ActivityServiceImpl implements ActivityService{
 		return activityRepository
 				.findAll()
 				.stream()
-				.map(activity -> ActivityResponse.convertActivityToActivityResponse(activity))
+				.map(ActivityResponse::convertActivityToActivityResponse)
 				.collect(Collectors.toList());
 	}
 
 	@Override
 	public ActivityResponse postActivity(ActivityRequest activityRequest) {
-		
-		
-		return ActivityResponse
+
+		if (!userServices.validate(activityRequest.getUserId())){
+			throw new RuntimeException("User not found: " + activityRequest.getUserId());
+		}
+
+		ActivityResponse activityResponse =  ActivityResponse
 				.convertActivityToActivityResponse(
 						activityRepository.save(
 								ActivityRequest.convertActivityRequestToActivity(activityRequest)
-								)
-						);
+						)
+				);
+
+		// Send activity to RabbitMQ PUBLISHER (Publish the activity to the exchange)
+
+		try{
+			rabbitTemplate.convertAndSend(exchangeName, routingKey, activityResponse);
+		} catch (Exception e) {
+			throw new RuntimeException("Failed to send activity to RabbitMQ: " + e.getMessage());
+		}
+
+		return activityResponse;
 	}
 
 	@Override

@@ -8,6 +8,13 @@ spring:
     mongodb:
       uri: mongodb://admin:admin123@localhost:27017/ # local docker mongo db container
       database: FitnessActivity
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
 eureka:
   instance:
     prefer-ip-address: true
@@ -16,3 +23,9 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+rabbitmq:
+  exchange:
+    name: fitness.activity.exchange
+  queue:
+    name: fitness.activity.queue
+  routing-key: fitness.activity.routingKey
