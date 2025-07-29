@@ -47,7 +47,6 @@ public class ActivityController {
 				map.put("STATUS", "FAILED");
 				map.put("MESSAGE", "This given UserId is not percent");
 			}
-			//map.put("DATA", map);
 		} catch (Exception e) {
 			map.put("STATUS", "FAILED");
 			map.put("MESSAGE", e.getMessage());
@@ -92,7 +91,6 @@ public class ActivityController {
 				map.put("STATUS", "FAILED");
 				map.put("MESSAGE", "This given UserId is not percent");
 			}
-			//map.put("DATA", map);
 		} catch (Exception e) {
 			map.put("STATUS", "FAILED");
 			map.put("MESSAGE", e.getMessage());
@@ -118,7 +116,6 @@ public class ActivityController {
 				map.put("STATUS", "FAILED");
 				map.put("MESSAGE", "This given UserId is not percent");
 			}
-			//map.put("DATA", map);
 		} catch (Exception e) {
 			map.put("STATUS", "FAILED");
 			map.put("MESSAGE", e.getMessage());
